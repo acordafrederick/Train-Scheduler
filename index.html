@@ -3,6 +3,7 @@
 <html lang="en">
 	
 	<head>
+
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Train Scheduler</title>
@@ -10,13 +11,9 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     	<!--Import Google Icon Font-->
     	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<!--Import materialize.css-->
-    	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-		
-  
 	</head>
   
   	<body>
@@ -27,84 +24,50 @@
 			    	<span class="nav-title center">Train Scheduler</span>	
 				</div>
 		    </div>
-		    <div class="nav-content">
-				<div class="row container">
-				    <form id="inputForm" class="col s12">
-				    	<div class="row">
-					        <div class="input-field col s6">
-						        <input id="employeeName" type="text" class="validate">
-						        <label for="employeeName">Employee Name</label>
-				        	</div>
-					        <div class="input-field col s6">
-						        <input id="role" type="text" class="validate">
-						        <label for="role">Role</label>
-				        	</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="input-field col s6">
-						        <input id="startDate" type="text" class="validate">
-						        <label for="startDate">Start Date(DD/MM/YY e.g. 21/01/14)</label>
-				        	</div>
-				        	<div class="input-field col s6">
-						        <input id="monthlyRate" type="text" class="validate">
-						        <label for="monthlyRate">Monthly Rate</label>
-				        	</div>
-				    	</div>
-						<button id="submitBtn" class="btn waves-effect waves-light" type="submit" name="action">Submit
-			    		<i class="material-icons right">send</i>
-			  			</button>
-				    </form>
-				</div>
-		    </div>
 		</nav>
+		<div class="row container">
+			<form>
+				<div class="form-group">
+					<label for="trainName">Train Name</label>
+					<input type="text" class="form-control" id="name" placeholder="Starlight Express">
+				</div>
+				<div class="form-group">
+					<label for="destination">Destination</label>
+					<input type="text" class="form-control" id="destination" placeholder="Philippines">
+				</div>
+				<div class="form-group">
+					<label for="trainTime">First Train Time (Military Time)</label>
+					<input type="text" class="form-control" id="time" placeholder="HHMM">
+				</div>
+				<div class="form-group">
+					<label for="frequency">Frequency (Minutes)</label>
+					<input type="text" class="form-control" id="frequency" placeholder="15">
+				</div>
+				<button id="submit" type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		<div class="row container">
+			<table id="trainTable" class="table">
+				<thead>
+					<tr>
+						<th scope="col">Train Name</th>
+						<th scope="col">Destination</th>
+						<th scope="col">Frequency (Mins)</th>
+						<th scope="col">Next Arrival</th>
+						<th scope="col">Minutes Away</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
 
-
-	
-		
-				        	<form>
-						        <div class="form-group">
-						        	<label for="trainName">Train Name</label>
-						        	<input type="text" class="form-control" id="name" placeholder="Starlight Express">
-						        </div>
-				        		<div class="form-group">
-									<label for="destination">Destination</label>
-									<input type="text" class="form-control" id="destination" placeholder="Philippines">
-				        		</div>
-				        		<div class="form-group">
-									<label for="trainTime">First Train Time (HH:MM - Military Time)</label>
-									<input type="text" class="form-control" id="time" placeholder="HHmm">
-				        		</div>
-						        <div class="form-group">
-									<label for="frequency">Frequency (Minutes)</label>
-									<input type="text" class="form-control" id="frequency" placeholder="15">
-						        </div>
-						        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
-						    </form>
-
-
-			<div class="row container">
-				<table id="trainTable" class="table">
-					<thead>
-						<tr>
-							<th scope="col">Train Name</th>
-							<th scope="col">Destination</th>
-							<th scope="col">Frequency (Mins)</th>
-							<th scope="col">Next Arrival</th>
-							<th scope="col">Minutes Away</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	    <script type="text/javascript" src="assets/javascript/app.js"></script>
     
     </body>
 </html>
